@@ -327,5 +327,4 @@ else:
                         st.session_state.cart = []  # Clear cart on successful purchase simulation
                     else:
                         st.error("Please fill out the payment details to authorize the circular economy dispatch order.")
-                st.markdown("</div>", unsafe_allow_html=True)True)
-            st.markdown("---")
+                st.markdown("</div>", unsafe_allow_html=True)
