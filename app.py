@@ -81,17 +81,17 @@ st.markdown("""
 # 2. APPLICATION STATE MANAGEMENT
 # ----------------------------------------------------
 if 'cafe_waste_balance' not in st.session_state: st.session_state.cafe_waste_balance = 35.0
-if 'producer_collected_waste' not in st.session_state: st.session_state.producer_collected_waste = 42.0  # Starts inside the free trial zone
+if 'producer_collected_waste' not in st.session_state: st.session_state.producer_collected_waste = 42.0
 if 'is_premium' not in st.session_state: st.session_state.is_premium = False
 if 'is_auth' not in st.session_state: st.session_state.is_auth = False
 if 'cart' not in st.session_state: st.session_state.cart = []
 if 'expert_chat_history' not in st.session_state: st.session_state.expert_chat_history = []
 
 market_catalog = {
-    "Premium Bio-Espresso Cup": {"origin": "Brew Mood Alsancak", "price": 145, "desc": "100% upcycled structure, heat-resistant casing built from localized carbon-offset coffee composite[cite: 1, 2]."},
-    "Nitrogen-Rich Soil Nutrient (2kg)": {"origin": "Two Cup Bornova", "price": 80, "desc": "Perfected bio-fertiliser additive formulation optimal for soil restoration matrix loops[cite: 1, 2]."},
-    "Exfoliating Coffee Body Scrub": {"origin": "Coffee Güzelyalı", "price": 110, "desc": "Organic cosmetic consumer goods utilizing antioxidant properties of local grounds extraction[cite: 1, 2]."},
-    "Eco Bio-Fuel Pellets (Bulk)": {"origin": "İzmir Bio-Factory", "price": 220, "desc": "Compressed alternative energy resource replacing high-emission coal solutions[cite: 1, 2]."}
+    "Premium Bio-Espresso Cup": {"origin": "Brew Mood Alsancak", "price": 145, "desc": "100% upcycled structure, heat-resistant casing built from localized carbon-offset coffee composite."},
+    "Nitrogen-Rich Soil Nutrient (2kg)": {"origin": "Two Cup Bornova", "price": 80, "desc": "Perfected bio-fertiliser additive formulation optimal for soil restoration matrix loops."},
+    "Exfoliating Coffee Body Scrub": {"origin": "Coffee Güzelyalı", "price": 110, "desc": "Organic cosmetic consumer goods utilizing antioxidant properties of local grounds extraction."},
+    "Eco Bio-Fuel Pellets (Bulk)": {"origin": "İzmir Bio-Factory", "price": 220, "desc": "Compressed alternative energy resource replacing high-emission coal solutions."}
 }
 
 # ----------------------------------------------------
@@ -156,7 +156,7 @@ else:
             st.markdown("""
                 <div class='app-header'>
                     <h2 style='color:white !important; margin:0;'>Your Cup Contributes to a Greener Future</h2>
-                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>How ReCoffee transitions local cities from linear waste to an eco-friendly circular economy[cite: 1, 2].</p>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>How ReCoffee transitions local cities from linear waste to an eco-friendly circular economy.</p>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -164,8 +164,8 @@ else:
             <div class='card'>
                 <h3>🎯 What is ReCoffee?</h3>
                 <p style='font-size: 1rem; color: #3E2723; line-height: 1.6;'>
-                Every single day, thousands of tons of nutrient-rich coffee grounds are discarded into common garbage bins[cite: 1, 2]. 
-                ReCoffee acts as a <b>digital structural bridge</b>, automatically connecting local coffee shops with sustainable farmers, bio-factories, and local crafters to ensure no grounds are left behind[cite: 1, 2].
+                Every single day, thousands of tons of nutrient-rich coffee grounds are discarded into common garbage bins. 
+                ReCoffee acts as a <b>digital structural bridge</b>, automatically connecting local coffee shops with sustainable farmers, bio-factories, and local crafters to ensure no grounds are left behind.
                 </p>
             </div>
             """, unsafe_allow_html=True)
@@ -176,8 +176,8 @@ else:
                 <div class='card'>
                     <h4>☕ Landfill Gas Mitigation (SDG 13)</h4>
                     <p style='font-size: 0.9rem; color: #5D4037; line-height: 1.5;'>
-                    When wet organic materials like coffee grounds break down raw inside regular landfills, they release heavy amounts of methane gas[cite: 1, 2]. 
-                    By buying products made from upcycled grounds, you directly help lock carbon compounds into stable, reusable materials instead[cite: 1, 2].
+                    When wet organic materials like coffee grounds break down raw inside regular landfills, they release heavy amounts of methane gas. 
+                    By buying products made from upcycled grounds, you directly help lock carbon compounds into stable, reusable materials instead.
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
@@ -186,8 +186,8 @@ else:
                 <div class='card'>
                     <h4>🌿 Nutrient Restoration (SDG 12)</h4>
                     <p style='font-size: 0.9rem; color: #5D4037; line-height: 1.5;'>
-                    Spent coffee grounds retain valuable trace micronutrients like nitrogen, phosphorus, and magnesium[cite: 1, 2]. 
-                    Our partner networks recycle these directly into high-yield organic organic soil fertilizers and cosmetic ingredients[cite: 1, 2].
+                    Spent coffee grounds retain valuable trace micronutrients like nitrogen, phosphorus, and magnesium. 
+                    Our partner networks recycle these directly into high-yield organic organic soil fertilizers and cosmetic ingredients.
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
@@ -196,7 +196,7 @@ else:
             st.markdown("""
                 <div class='app-header'>
                     <h2 style='color:white !important; margin:0;'>The Upcycled Marketplace</h2>
-                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Support sustainable brands by purchasing unique goods manufactured from localized coffee waste streams[cite: 1, 2].</p>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Support sustainable brands by purchasing unique goods manufactured from localized coffee waste streams.</p>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -261,7 +261,7 @@ else:
             st.markdown("""
                 <div class='app-header'>
                     <h2 style='color:white !important; margin:0;'>Cafe Management Portal</h2>
-                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Track environmental benchmarks, dispatch metrics, and unlock green validation certificates[cite: 1, 2].</p>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Track environmental benchmarks, dispatch metrics, and unlock green validation certificates.</p>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -274,9 +274,9 @@ else:
                 st.progress(progress_factor)
                 
                 if current_vol >= 50.0:
-                    st.success("🎉 **Green Badge Unlocked!** Your establishment has reached the 50kg benchmark. Your store's storefront QR impact sticker is authorized for deployment[cite: 1, 2].")
+                    st.success("🎉 **Green Badge Unlocked!** Your establishment has reached the 50kg benchmark. Your store's storefront QR impact sticker is authorized for deployment.")
                 else:
-                    st.warning(f"💡 You need to dispatch exactly **{50.0 - current_vol:.1f} kg** more coffee grounds to claim your verified 'Green Badge'[cite: 1, 2].")
+                    st.warning(f"💡 You need to dispatch exactly **{50.0 - current_vol:.1f} kg** more coffee grounds to claim your verified 'Green Badge'.")
                 st.markdown("</div>", unsafe_allow_html=True)
                 
                 st.markdown("<div class='card'>", unsafe_allow_html=True)
@@ -293,10 +293,10 @@ else:
                 st.markdown("### 🏅 Verified Credential Status")
                 if st.session_state.cafe_waste_balance >= 50.0:
                     st.markdown("<p style='font-size:5.5rem; margin:0;'>🟢</p>", unsafe_allow_html=True)
-                    st.markdown("<h4 style='color:#2E7D32 !important; margin:0;'>GREEN BADGE COMPLIANT</h4><p style='font-size:0.85rem; color:#795548;'>CSR corporate target validation active[cite: 1, 2].</p>", unsafe_allow_html=True)
+                    st.markdown("<h4 style='color:#2E7D32 !important; margin:0;'>GREEN BADGE COMPLIANT</h4><p style='font-size:0.85rem; color:#795548;'>CSR corporate target validation active.</p>", unsafe_allow_html=True)
                 else:
                     st.markdown("<p style='font-size:5.5rem; margin:0;'>🟡</p>", unsafe_allow_html=True)
-                    st.markdown("<h4 style='color:#E65100 !important; margin:0;'>STANDARD TIER</h4><p style='font-size:0.85rem; color:#795548;'>Increase your baseline circular volume contribution to unlock partner validation criteria[cite: 1, 2].</p>", unsafe_allow_html=True)
+                    st.markdown("<h4 style='color:#E65100 !important; margin:0;'>STANDARD TIER</h4><p style='font-size:0.85rem; color:#795548;'>Increase your baseline circular volume contribution to unlock partner validation criteria.</p>", unsafe_allow_html=True)
                 st.markdown("</div>", unsafe_allow_html=True)
 
     # ----------------------------------------------------
@@ -311,39 +311,55 @@ else:
             "🔬 Agronomy Consultation & Q&A Portal"
         ])
         
-        # PRODUCER MAP INTERFACE
+        # PRODUCER MAP INTERFACE (DYNAMICAL VOLUMES EMBEDDED)
         if prod_nav == "🗺️ The Bridge (Sourcing Map)":
             st.markdown("""
                 <div class='app-header'>
                     <h2 style='color:white !important; margin:0;'>The Bridge: Live Sourcing Tracker</h2>
-                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>B2B Matching Optimization Module via Spatial GPS Parameters[cite: 1, 2].</p>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>B2B Matching Optimization Module via Spatial GPS Parameters.</p>
                 </div>
             """, unsafe_allow_html=True)
             
-            # 🔥 STRICT 50 KG LIMIT CEILING RULE FOR FREE ACCOUNTS
+            # STRICT 50 KG LIMIT CEILING RULE FOR FREE ACCOUNTS
             if not st.session_state.is_premium and st.session_state.producer_collected_waste >= 50.0:
-                st.error("🔒 **B2B Sourcing Interface Locked!** Your enterprise profile has exhausted its **50 kg Free Trial allocation limit (50 kg Trial Rule)**[cite: 1, 2]. Sourcing continuous hammadde material now requires a **50 TL/month Premium Subscription** + **1 TL/kg surcharge parameters**[cite: 1, 2]. Access the Quota Engine to unlock.")
+                st.error("🔒 **B2B Sourcing Interface Locked!** Your enterprise profile has exhausted its **50 kg Free Trial allocation limit (50 kg Trial Rule)**. Sourcing continuous hammadde material now requires a **50 TL/month Premium Subscription** + **1 TL/kg surcharge parameters**. Access the Quota Engine to unlock.")
             else:
                 m1, m2, m3 = st.columns(3)
                 current_total_pool = st.session_state.cafe_waste_balance + 20.0 + 32.0
                 m1.metric("Total Available Grounds (İzmir Area)", f"{current_total_pool:.1f} kg")
-                m2.metric("Target Pricing Model", "Hybrid Surcharge Architecture[cite: 1, 2]")
-                m3.metric("Active Environmental Hubs", "3 Hotspots Connected[cite: 1, 2]")
+                m2.metric("Target Pricing Model", "Hybrid Surcharge Architecture")
+                m3.metric("Active Environmental Hubs", "3 Hotspots Connected")
                 
-                st.markdown("### 📍 Spatial GPS Matching Cluster")
+                # 🔥 DYNAMIC MAP DATA FRAME WITH POINT NAMES & CAPACITIES FOR TOOLTIPS
+                st.markdown("### 📍 Spatial GPS Sourcing Cluster (Click points to see Cafe name & available stock)")
                 map_df = pd.DataFrame({
                     'lat': [38.4385, 38.4633, 38.3244],
                     'lon': [27.1432, 27.2167, 26.7644],
-                    'name': ['Brew Mood Alsancak (15kg)', 'Two Cup Bornova (20kg)', 'Port Coffee Urla (32kg)']
+                    # Tooltip descriptions directly combined into the map dataframe
+                    'name': [
+                        f'Brew Mood Alsancak Hub - Avail: {st.session_state.cafe_waste_balance:.1f} kg', 
+                        'Two Cup Bornova Hub - Avail: 20.0 kg', 
+                        'Port Coffee Urla Hub - Avail: 32.0 kg'
+                    ]
                 })
                 st.map(map_df, size=16)
+
+                # 🔥 DETAILED INFORMATION GRID SHOWING EXACT QUANTITY IN EACH CAFE
+                st.markdown("### 📋 Real-Time Hub Inventory Analytics Ledger")
+                hotspots_df = pd.DataFrame({
+                    "Cafe Node Identifier": ["Brew Mood Alsancak Hub", "Two Cup Bornova Hub", "Port Coffee Urla Hub"],
+                    "Geographic Cluster Radius": ["1.2 km Radius", "4.5 km Radius", "12.5 km Radius"],
+                    "Exact Available Stock (KG)": [f"{st.session_state.cafe_waste_balance:.1f} kg", "20.0 kg", "32.0 kg"],
+                    "Quality Compliance Parameter": ["Premium Output (Moisture <5%)", "Standard Level", "Pending Validation"]
+                })
+                st.dataframe(hotspots_df, use_container_width=True)
 
         # PRODUCER REVENUE ENGINE (50 KG CEILING MATRIX)
         elif prod_nav == "💎 Premium Subscription & Quota Engine":
             st.markdown("""
                 <div class='app-header'>
                     <h2 style='color:white !important; margin:0;'>B2B Hybrid Pricing Engine</h2>
-                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Fixed 50 TL/Month Subscription Matrix + 1 TL/kg Scaled Variable Cost Parameter Above 50kg Quota[cite: 1, 2].</p>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Fixed 50 TL/Month Subscription Matrix + 1 TL/kg Scaled Variable Cost Parameter Above 50kg Quota.</p>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -357,10 +373,9 @@ else:
                 st.markdown("#### 💳 Financial Billing Allocation Breakdown:")
                 base_sub_fee = 50 if st.session_state.is_premium else 0
                 
-                # 🔥 HYBRID CALCULATION SHIFTED FROM 60 KG TO EXACTLY 50 KG FREE CEILING
                 if collected > 50.0:
                     surcharge_kg = collected - 50.0
-                    variable_fee = surcharge_kg * 1.0  # 1 TL / kg above 50kg threshold
+                    variable_fee = surcharge_kg * 1.0
                 else:
                     surcharge_kg = 0
                     variable_fee = 0
@@ -382,9 +397,8 @@ else:
                 st.markdown("### 🚜 Simulate B2B Sourcing Stream Extraction")
                 sim_add = st.number_input("Designate Volume to Squeeze From Active Nodes (kg):", min_value=0.0, step=5.0, value=10.0)
                 if st.button("Execute Extraction Over The Bridge"):
-                    # 🔥 BLOCK LOCK FIXED AT 50 KG LIMIT FOR UNPAID TIERS
                     if not st.session_state.is_premium and (st.session_state.producer_collected_waste + sim_add) >= 50.0:
-                        st.error("❌ **Transaction Refused:** This operation pushes your allocation past the 50 kg free trial ceiling. You must activate the 50 TL/Month Premium Subscription tier to authorize further actions[cite: 1, 2].")
+                        st.error("❌ **Transaction Refused:** This operation pushes your allocation past the 50 kg free trial ceiling. You must activate the 50 TL/Month Premium Subscription tier to authorize further actions.")
                     else:
                         st.session_state.producer_collected_waste += sim_add
                         st.toast(f"Logged {sim_add} kg of industrial resource materials!")
@@ -396,12 +410,12 @@ else:
                 st.markdown("<p style='color: #E65100; letter-spacing: 1px; font-weight:600; font-size:0.8rem; margin:0;'>HYBRID SUBSCRIPTION HUB</p>", unsafe_allow_html=True)
                 st.markdown("<h3 style='margin-top:5px;'>👑 Premium B2B Tier</h3>", unsafe_allow_html=True)
                 st.markdown("<h1 style='color:#E65100 !important; font-size:3rem; margin:10px 0;'>50 TL <span style='font-size:1rem; color:#795548; font-weight:400;'>/ month</span></h1>", unsafe_allow_html=True)
-                st.markdown("<p style='font-size:0.85rem; color:#5D4037;'><b>+ 1 TL per additional kg</b> extracted once your enterprise passes the 50 kg free trial operational boundary[cite: 1, 2].</p>", unsafe_allow_html=True)
+                st.markdown("<p style='font-size:0.85rem; color:#5D4037;'><b>+ 1 TL per additional kg</b> extracted once your enterprise passes the 50 kg free trial operational boundary.</p>", unsafe_allow_html=True)
                 st.markdown("---")
                 if st.session_state.is_premium:
                     if st.button("Deactivate Premium License Token", use_container_width=True):
                         st.session_state.is_premium = False
-                        st.session_state.producer_collected_waste = 35.0  # Safe return under the cap parameter
+                        st.session_state.producer_collected_waste = 35.0
                         st.rerun()
                 else:
                     if st.button("Authorize 50 TL Premium Subscription", use_container_width=True):
@@ -416,9 +430,9 @@ else:
         st.markdown("<div class='app-header'><h2>Expert Consultation & Applied Material Science</h2></div>", unsafe_allow_html=True)
         col_ag1, col_ag2 = st.columns(2)
         with col_ag1:
-            st.markdown("<div class='card'><h3>🧪 Soil Chemistry Optimization</h3><p><b>Optimal Range: 5.8 - 6.2 pH Range</b><br>Highly compatible for regional citrus vegetation and roses[cite: 1, 2].</p></div>", unsafe_allow_html=True)
+            st.markdown("<div class='card'><h3>🧪 Soil Chemistry Optimization</h3><p><b>Optimal Range: 5.8 - 6.2 pH Range</b><br>Highly compatible for regional citrus vegetation and roses.</p></div>", unsafe_allow_html=True)
         with col_ag2:
-            st.markdown("<div class='card'><h3>🪱 Quality Control Parameters</h3><p>• Mold Isolation: Dry grounds within <b>24 hours</b>[cite: 1, 2].<br>• Bio-Fuel Pellets: Maintain moisture parameters <b>under 5%</b>[cite: 1, 2].</p></div>", unsafe_allow_html=True)
+            st.markdown("<div class='card'><h3>🪱 Quality Control Parameters</h3><p>• Mold Isolation: Dry grounds within <b>24 hours</b>.<br>• Bio-Fuel Pellets: Maintain moisture parameters <b>under 5%</b>.</p></div>", unsafe_allow_html=True)
             
         st.markdown("### 💬 Live Interactive Consultation Interface")
         st.markdown("<div class='card'>", unsafe_allow_html=True)
@@ -430,8 +444,8 @@ else:
         if st.button("Transmit Query Token"):
             if user_query:
                 st.session_state.expert_chat_history.append({'role': 'user', 'text': user_query})
-                resp = "Spent coffee grounds are highly rich in essential nitrogen minerals[cite: 1, 2]. Since properties track at 5.8-6.2 pH, configure deployment primarily around acid-loving regional crops[cite: 1, 2]."
-                if "mushroom" in user_query.lower(): resp = "Oyster mushrooms display high yield trends when grown on pasteurized spent coffee ground substrates due to nitrogen availability parameters[cite: 1, 2]."
+                resp = "Spent coffee grounds are highly rich in essential nitrogen minerals. Since properties track at 5.8-6.2 pH, configure deployment primarily around acid-loving regional crops."
+                if "mushroom" in user_query.lower(): resp = "Oyster mushrooms display high yield trends when grown on pasteurized spent coffee ground substrates due to nitrogen availability parameters."
                 st.session_state.expert_chat_history.append({'role': 'bot', 'text': resp})
                 st.rerun()
         st.markdown("</div>", unsafe_allow_html=True)
