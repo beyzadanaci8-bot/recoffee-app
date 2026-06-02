@@ -2,21 +2,21 @@ import streamlit as st
 import pandas as pd
 import time
 
-# 1. ACADEMIC PAGE CONFIGURATION & STYLING
+# 1. PAGE CONFIGURATION & STYLING
 st.set_page_config(
-    page_title="ReCoffee - Dokuz Eylül University Faculty of Business", 
+    page_title="ReCoffee - Circular Economy Platform", 
     page_icon="☕", 
     layout="wide"
 )
 
-# Executive UI/UX Design System Built for Academic Presentations
+# Executive UI/UX Design System for Premium App Feel
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
     * { font-family: 'Poppins', sans-serif; }
     .stApp { background-color: #FDFBF7; }
     
-    /* Academic Executive Cards */
+    /* Premium Cards */
     .card {
         background: white;
         padding: 26px;
@@ -33,7 +33,7 @@ st.markdown("""
         margin-bottom: 22px;
         border: 1px solid #FFB74D;
     }
-    .academic-header {
+    .app-header {
         background: linear-gradient(135deg, #3E2723 0%, #1A0C0A 100%);
         padding: 30px;
         border-radius: 18px;
@@ -90,61 +90,52 @@ if 'expert_chat_history' not in st.session_state: st.session_state.expert_chat_h
 market_catalog = {
     "Premium Bio-Espresso Cup": {"origin": "Brew Mood Alsancak", "price": 145, "desc": "100% upcycled structure, heat-resistant casing built from localized carbon-offset coffee composite."},
     "Nitrogen-Rich Soil Nutrient (2kg)": {"origin": "Two Cup Bornova", "price": 80, "desc": "Perfected bio-fertiliser additive formulation optimal for soil restoration matrix loops."},
-    "Exfoliating Coffee Body Scrub": {"origin": "Coffee Güzelyalı", "price": 110, "desc": "Organic cosmetic consumer goods utilizing antioxidant properties of local grounds extraction."},
-    "Eco Bio-Fuel Pellets (Bulk)": {"origin": "İzmir Bio-Factory", "price": 220, "desc": "Compressed alternative energy resource replacing high-emission coal solutions."}
+    "Exfoliating Coffee Body Scrub": {"origin": "Coffee Güzelyalı", "price": 110, "desc": "Organic cosmetic consumer goods utilizing antioxidant properties of local grounds extraction[cite: 1, 2]."},
+    "Eco Bio-Fuel Pellets (Bulk)": {"origin": "İzmir Bio-Factory", "price": 220, "desc": "Compressed alternative energy resource replacing high-emission coal solutions[cite: 1, 2]."}
 }
 
 # ----------------------------------------------------
-# 3. AUTHENTICATION & LOGIN HUB (WITH STRICT INPUT CHECK)
+# 3. AUTHENTICATION & LOGIN HUB (STRICT INPUT CHECK)
 # ----------------------------------------------------
 if not st.session_state.is_auth:
     col_l, col_c, col_r = st.columns([0.8, 1.8, 0.8])
     with col_c:
-        st.markdown("<div class='card' style='margin-top: 40px; text-align: center;'>", unsafe_allow_html=True)
-        st.markdown("<p style='color: #795548; letter-spacing: 2px; font-weight:600; margin-bottom:0;'>MRK 2002 MARKETING APPLICATIONS</p>", unsafe_allow_html=True)
+        st.markdown("<div class='card' style='margin-top: 60px; text-align: center;'>", unsafe_allow_html=True)
         st.markdown("<h1 class='brand-title' style='margin-top:0;'>ReCoffee</h1>", unsafe_allow_html=True)
         st.markdown("<p class='brand-subtitle'>\"Your morning coffee, changed.\"</p>", unsafe_allow_html=True)
         
-        email_inp = st.text_input("Corporate / Stakeholder Email", placeholder="example@deu.edu.tr")
-        pass_inp = st.text_input("Security Key Access", type="password", placeholder="••••••••")
-        user_role_inp = st.selectbox("Select Your User Ecosystem Profile", [
+        email_inp = st.text_input("Account Email Address", placeholder="name@domain.com")
+        pass_inp = st.text_input("Password / Security Key", type="password", placeholder="••••••••")
+        user_role_inp = st.selectbox("Select Your Profile Type", [
+            "Individual Consumer (Shopper)",
             "Cafe / Coffee Shop (Waste Supplier)", 
             "Producer / Manufacturer (Waste Recycler)"
         ])
         
         st.markdown("<br>", unsafe_allow_html=True)
-        if st.button("Initialize Circular Ecosystem Bridge", use_container_width=True):
-            # 🔥 STRICT VALIDATION CORE: Giriş alanlarının doluluk kontrolü
+        if st.button("Connect to ReCoffee Network", use_container_width=True):
             if not email_inp.strip() and not pass_inp.strip():
-                st.error("🔒 **Access Denied:** Email and Security Key areas cannot be left entirely blank. Please provide corporate credentials to bridge into the system.")
+                st.error("🔒 **Access Denied:** Email and Password areas cannot be left blank. Please provide credentials to enter.")
             elif not email_inp.strip():
-                st.error("📧 **Access Denied:** Corporate Email field is empty. Input a verified email token.")
+                st.error("📧 **Access Denied:** Email address field cannot be empty.")
             elif "@" not in email_inp or "." not in email_inp:
-                st.error("⚠️ **Access Denied:** Invalid corporate email structure pattern. Please check and format correctly (e.g., node@recoffee.com).")
+                st.error("⚠️ **Access Denied:** Invalid email format pattern. Please enter a valid address (e.g., test@recoffee.com).")
             elif not pass_inp.strip():
-                st.error("🔑 **Access Denied:** Security Key parameter missing. Input your cluster access key.")
+                st.error("🔑 **Access Denied:** Password parameter missing.")
             else:
-                # All controls passed successfully
                 st.session_state.is_auth = True
                 st.session_state.role_string = user_role_inp
                 st.rerun()
-            
-        st.markdown("""
-            <p style='font-size:0.8rem; color:#A1887F; margin-top:20px;'>
-            <b>Project Group:</b> Beyzanur Danacı, Büşra Fadime Ayan, Ayça Biçer, Sıla Zerger<br>
-            Dokuz Eylül University Faculty of Business Administration — 2026
-            </p>
-        """, unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
 # ----------------------------------------------------
-# 4. MAIN EXECUTIVE APPLICATION HUB (ROLE-BASED)
+# 4. MAIN APPLICATION HUB (ROLE-BASED DESIGN)
 # ----------------------------------------------------
 else:
     # Sidebar Setup
-    st.sidebar.markdown("<h2 style='text-align: center; color: #2E7D32 !important; margin-bottom:5px;'>ReCoffee Hub</h2>", unsafe_allow_html=True)
+    st.sidebar.markdown("<h2 style='text-align: center; color: #2E7D32 !important; margin-bottom:5px;'>ReCoffee App</h2>", unsafe_allow_html=True)
     
-    if st.sidebar.button("Secure Logout", use_container_width=True):
+    if st.sidebar.button("Logout", use_container_width=True):
         st.session_state.is_auth = False
         st.session_state.cart = []
         st.rerun()
@@ -152,22 +143,128 @@ else:
     st.sidebar.markdown("---")
     
     # ----------------------------------------------------
-    # ROLE 1: CAFE USER INTERFACE
+    # ROLE 1: INDIVIDUAL CONSUMER INTERFACE (NEW)
     # ----------------------------------------------------
-    if st.session_state.role_string == "Cafe / Coffee Shop (Waste Supplier)":
+    if st.session_state.role_string == "Individual Consumer (Shopper)":
+        st.sidebar.markdown("<div style='text-align: center; font-size: 0.85rem; margin-bottom:15px; padding: 8px; background:#E0F2F1; border-radius:8px; border: 1px solid #B2DFDB; color:#004D40;'><b>Logged in as:</b><br>🛍️ Eco-Shopper / Consumer</div>", unsafe_allow_html=True)
+        
+        shopper_nav = st.sidebar.radio("Menu", [
+            "🌱 ReCoffee Impact & Info",
+            "🛒 Marketplace & Checkout"
+        ])
+        
+        # SHOPPER SCREEN A: INFORMATIONAL CORNER
+        if shopper_nav == "🌱 ReCoffee Impact & Info":
+            st.markdown("""
+                <div class='app-header'>
+                    <h2 style='color:white !important; margin:0;'>Your Cup Contributes to a Greener Future</h2>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>How ReCoffee transitions local cities from linear waste to an eco-friendly circular economy[cite: 1, 2].</p>
+                </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class='card'>
+                <h3>🎯 What is ReCoffee?</h3>
+                <p style='font-size: 1rem; color: #3E2723; line-height: 1.6;'>
+                Every single day, thousands of tons of nutrient-rich coffee grounds are discarded into common garbage bins[cite: 1, 2]. 
+                ReCoffee acts as a <b>digital structural bridge</b>, automatically connecting local coffee shops with sustainable farmers, bio-factories, and local crafters to ensure no grounds are left behind[cite: 1, 2].
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            col_sh1, col_sh2 = st.columns(2)
+            with col_sh1:
+                st.markdown("""
+                <div class='card'>
+                    <h4>☕ Landfill Gas Mitigation (SDG 13)</h4>
+                    <p style='font-size: 0.9rem; color: #5D4037; line-height: 1.5;'>
+                    When wet organic materials like coffee grounds break down raw inside regular landfills, they release heavy amounts of methane gas[cite: 1, 2]. 
+                    By buying products made from upcycled grounds, you directly help lock carbon compounds into stable, reusable materials instead[cite: 1, 2].
+                    </p>
+                </div>
+                """, unsafe_allow_html=True)
+            with col_sh2:
+                st.markdown("""
+                <div class='card'>
+                    <h4>🌿 Nutrient Restoration (SDG 12)</h4>
+                    <p style='font-size: 0.9rem; color: #5D4037; line-height: 1.5;'>
+                    Spent coffee grounds retain valuable trace micronutrients like nitrogen, phosphorus, and magnesium[cite: 1, 2]. 
+                    Our partner networks recycle these directly into high-yield organic organic soil fertilizers and cosmetic ingredients[cite: 1, 2].
+                    </p>
+                </div>
+                """, unsafe_allow_html=True)
+                
+        # SHOPPER SCREEN B: ECO-MARKET
+        elif shopper_nav == "🛒 Marketplace & Checkout":
+            st.markdown("""
+                <div class='app-header'>
+                    <h2 style='color:white !important; margin:0;'>The Upcycled Marketplace</h2>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Support sustainable brands by purchasing unique goods manufactured from localized coffee waste streams[cite: 1, 2].</p>
+                </div>
+            """, unsafe_allow_html=True)
+            
+            col_mk1, col_mk2 = st.columns([1.8, 1])
+            with col_mk1:
+                for title, info in market_catalog.items():
+                    st.markdown("<div class='card'>", unsafe_allow_html=True)
+                    cols = st.columns([3, 1])
+                    cols[0].markdown(f"#### {title}")
+                    cols[0].markdown(f"<p style='color: #2E7D32; font-size: 0.85rem; margin: 0;'><b>Supply Node Source:</b> {info['origin']}</p>", unsafe_allow_html=True)
+                    cols[0].write(info['desc'])
+                    cols[1].markdown(f"<h3 style='text-align: center; margin-top:12px;'>{info['price']} TL</h3>", unsafe_allow_html=True)
+                    if cols[1].button("Add to Cart", key=title):
+                        st.session_state.cart.append({"title": title, "price": info['price']})
+                        st.toast(f"{title} added to shopping cart!")
+                        st.rerun()
+                    st.markdown("</div>", unsafe_allow_html=True)
+            with col_mk2:
+                st.markdown("### 🛒 Your Order Basket")
+                st.markdown("<div class='card'>", unsafe_allow_html=True)
+                if not st.session_state.cart:
+                    st.write("*Your basket is currently empty.*")
+                    total_price = 0
+                else:
+                    total_price = 0
+                    for item in st.session_state.cart:
+                        st.write(f"• **{item['title']}** — {item['price']} TL")
+                        total_price += item['price']
+                    st.markdown("---")
+                    st.markdown(f"#### **Total Due: {total_price} TL**")
+                    if st.button("Empty Basket"):
+                        st.session_state.cart = []
+                        st.rerun()
+                st.markdown("</div>", unsafe_allow_html=True)
+                
+                if total_price > 0:
+                    st.markdown("<div class='card'>", unsafe_allow_html=True)
+                    st.markdown("#### 💳 Secure Gateway Checkout")
+                    st.text_input("Cardholder Name", placeholder="Jane Doe")
+                    st.text_input("Card Account Number", placeholder="0000 0000 0000 0000", max_chars=19)
+                    col_ex1, col_ex2 = st.columns(2)
+                    col_ex1.text_input("Expiration (MM/YY)", placeholder="12/28", max_chars=5)
+                    col_ex2.text_input("Security Code (CVC)", type="password", placeholder="***", max_chars=3)
+                    
+                    if st.button("Complete Safe Checkout", use_container_width=True):
+                        st.success(f"🎉 Success! Payment of {total_price} TL authorized. Your upcycled package order has been dispatched. Thank you for choosing green with ReCoffee!")
+                        st.session_state.cart = []
+                    st.markdown("</div>", unsafe_allow_html=True)
+
+    # ----------------------------------------------------
+    # ROLE 2: CAFE USER INTERFACE
+    # ----------------------------------------------------
+    elif st.session_state.role_string == "Cafe / Coffee Shop (Waste Supplier)":
         st.sidebar.markdown("<div style='text-align: center; color: #795548; font-size: 0.85rem; margin-bottom:15px; padding: 8px; background:#E8F5E9; border-radius:8px; border: 1px solid #C8E6C9; color:#1B5E20;'><b>Logged in as:</b><br>☕ Waste Supplier Node</div>", unsafe_allow_html=True)
         
         cafe_nav = st.sidebar.radio("Navigation Hub", [
             "🏪 Cafe Portal & Milestones",
-            "🔬 Material Science Guidance",
-            "🛒 Circular Eco-Market"
+            "🔬 Material Science Guidance"
         ])
         
         if cafe_nav == "🏪 Cafe Portal & Milestones":
             st.markdown("""
-                <div class='academic-header'>
-                    <h2 style='color:white !important; margin:0;'>Cafe Management & Sustainability Milestones</h2>
-                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Track environmental benchmarks, dispatch metrics, and unlock green validation certificates.</p>
+                <div class='app-header'>
+                    <h2 style='color:white !important; margin:0;'>Cafe Management Portal</h2>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Track environmental benchmarks, dispatch metrics, and unlock green validation certificates[cite: 1, 2].</p>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -199,14 +296,14 @@ else:
                 st.markdown("### 🏅 Verified Credential Status")
                 if st.session_state.cafe_waste_balance >= 50.0:
                     st.markdown("<p style='font-size:5.5rem; margin:0;'>🟢</p>", unsafe_allow_html=True)
-                    st.markdown("<h4 style='color:#2E7D32 !important; margin:0;'>GREEN BADGE COMPLIANT</h4><p style='font-size:0.85rem; color:#795548;'>CSR corporate target validation active. Customer trust matrix accelerated[cite: 1, 2].</p>", unsafe_allow_html=True)
+                    st.markdown("<h4 style='color:#2E7D32 !important; margin:0;'>GREEN BADGE COMPLIANT</h4><p style='font-size:0.85rem; color:#795548;'>CSR corporate target validation active[cite: 1, 2].</p>", unsafe_allow_html=True)
                 else:
                     st.markdown("<p style='font-size:5.5rem; margin:0;'>🟡</p>", unsafe_allow_html=True)
                     st.markdown("<h4 style='color:#E65100 !important; margin:0;'>STANDARD TIER</h4><p style='font-size:0.85rem; color:#795548;'>Increase your baseline circular volume contribution to unlock partner validation criteria[cite: 1, 2].</p>", unsafe_allow_html=True)
                 st.markdown("</div>", unsafe_allow_html=True)
 
     # ----------------------------------------------------
-    # ROLE 2: PRODUCER INTERFACE (HYBRID PRICING)
+    # ROLE 3: PRODUCER INTERFACE (HYBRID PRICING)
     # ----------------------------------------------------
     elif st.session_state.role_string == "Producer / Manufacturer (Waste Recycler)":
         st.sidebar.markdown("<div style='text-align: center; color: #795548; font-size: 0.85rem; margin-bottom:15px; padding: 8px; background:#FFF3E0; border-radius:8px; border: 1px solid #FFE0B2; color:#E65100;'><b>Logged in as:</b><br>🚜 Waste Recycler Node</div>", unsafe_allow_html=True)
@@ -214,15 +311,14 @@ else:
         prod_nav = st.sidebar.radio("Navigation Hub", [
             "🗺️ The Bridge (Sourcing Map)", 
             "💎 Premium Subscription & Quota Engine",
-            "🔬 Agronomy Consultation & Q&A Portal", 
-            "🛒 Eco-Marketplace"
+            "🔬 Agronomy Consultation & Q&A Portal"
         ])
         
         if prod_nav == "🗺️ The Bridge (Sourcing Map)":
             st.markdown("""
-                <div class='academic-header'>
+                <div class='app-header'>
                     <h2 style='color:white !important; margin:0;'>The Bridge: Live Sourcing Tracker</h2>
-                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'><b>Place Strategy Framework:</b> B2B Matching Optimization Module via Spatial GPS Parameters[cite: 1, 2].</p>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>B2B Matching Optimization Module via Spatial GPS Parameters[cite: 1, 2].</p>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -242,21 +338,12 @@ else:
                     'name': ['Brew Mood Alsancak (15kg)', 'Two Cup Bornova (20kg)', 'Port Coffee Urla (32kg)']
                 })
                 st.map(map_df, size=16)
-                
-                st.markdown("### 📋 Spatial Hub Analytical Metrics Matrix")
-                hotspots_df = pd.DataFrame({
-                    "Ecosystem Node Location": ["Brew Mood Alsancak Hub", "Two Cup Bornova Hub", "Port Coffee Urla Hub"],
-                    "Proximity Radius Boundary": ["1.2 km Cluster", "4.5 km Cluster", "12.5 km Cluster"],
-                    "Verified Available Volume": [f"{st.session_state.cafe_waste_balance} kg", "20.0 kg", "32.0 kg"],
-                    "Strategic Baseline Cost": ["0 TL (Below 60kg Threshold)[cite: 1, 2]", "0 TL", "0 TL"]
-                })
-                st.dataframe(hotspots_df, use_container_width=True)
 
         elif prod_nav == "💎 Premium Subscription & Quota Engine":
             st.markdown("""
-                <div class='academic-header'>
+                <div class='app-header'>
                     <h2 style='color:white !important; margin:0;'>B2B Hybrid Pricing Engine</h2>
-                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'><b>Pricing Model Configuration:</b> Fixed 50 TL/Month Subscription Matrix + 1 TL/kg Scaled Variable Cost Parameter Above 60kg Quota[cite: 1, 2].</p>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Fixed 50 TL/Month Subscription Matrix + 1 TL/kg Scaled Variable Cost Parameter Above 60kg Quota[cite: 1, 2].</p>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -309,14 +396,6 @@ else:
                 st.markdown("<h1 style='color:#E65100 !important; font-size:3rem; margin:10px 0;'>50 TL <span style='font-size:1rem; color:#795548; font-weight:400;'>/ month</span></h1>", unsafe_allow_html=True)
                 st.markdown("<p style='font-size:0.85rem; color:#5D4037;'><b>+ 1 TL per additional kg</b> extracted once your enterprise passes the 60 kg operational boundary[cite: 1, 2].</p>", unsafe_allow_html=True)
                 st.markdown("---")
-                st.markdown("""
-                    <div style='text-align:left; font-size:0.82rem; color:#5D4037; line-height:1.6; margin-bottom:15px;'>
-                    🔓 <b>Complete Spatial GPS Map Integration</b><br>
-                    🚀 <b>Bypass Authority over the 60kg Limit Ceiling</b><br>
-                    🏭 <b>Scalable Sourcing Configurations for Industrial Needs</b>
-                    </div>
-                """, unsafe_allow_html=True)
-                
                 if st.session_state.is_premium:
                     if st.button("Deactivate Premium License Token", use_container_width=True):
                         st.session_state.is_premium = False
@@ -329,15 +408,15 @@ else:
                 st.markdown("</div>", unsafe_allow_html=True)
 
     # ----------------------------------------------------
-    # MUTUAL COMMODITY SECTIONS AVAILABLE TO ALL
+    # MUTUAL GUIDANCE SECTION
     # ----------------------------------------------------
-    if nav_selection == "🔬 Material Science Guidance" or (st.session_state.role_string == "Producer / Manufacturer (Waste Recycler)" and prod_nav == "🔬 Agronomy Consultation & Q&A Portal"):
-        st.markdown("<div class='academic-header'><h2>Expert Consultation & Applied Material Science</h2></div>", unsafe_allow_html=True)
+    if (st.session_state.role_string == "Cafe / Coffee Shop (Waste Supplier)" and cafe_nav == "🔬 Material Science Guidance") or (st.session_state.role_string == "Producer / Manufacturer (Waste Recycler)" and prod_nav == "🔬 Agronomy Consultation & Q&A Portal"):
+        st.markdown("<div class='app-header'><h2>Expert Consultation & Applied Material Science</h2></div>", unsafe_allow_html=True)
         col_ag1, col_ag2 = st.columns(2)
         with col_ag1:
-            st.markdown("<div class='card'><h3>🧪 Soil Chemistry Optimization</h3><p><b>Optimal Range: 5.8 - 6.2 pH Range</b><br>Highly compatible for regional citrus vegetation and roses.</p></div>", unsafe_allow_html=True)
+            st.markdown("<div class='card'><h3>🧪 Soil Chemistry Optimization</h3><p><b>Optimal Range: 5.8 - 6.2 pH Range</b><br>Highly compatible for regional citrus vegetation and roses[cite: 1, 2].</p></div>", unsafe_allow_html=True)
         with col_ag2:
-            st.markdown("<div class='card'><h3>🪱 Quality Control Parameters</h3><p>• Mold Isolation: Dry grounds within <b>24 hours</b>.<br>• Bio-Fuel Pellets: Maintain moisture parameters <b>under 5%</b>.</p></div>", unsafe_allow_html=True)
+            st.markdown("<div class='card'><h3>🪱 Quality Control Parameters</h3><p>• Mold Isolation: Dry grounds within <b>24 hours</b>[cite: 1, 2].<br>• Bio-Fuel Pellets: Maintain moisture parameters <b>under 5%</b>[cite: 1, 2].</p></div>", unsafe_allow_html=True)
             
         st.markdown("### 💬 Live Interactive Consultation Interface")
         st.markdown("<div class='card'>", unsafe_allow_html=True)
@@ -349,52 +428,8 @@ else:
         if st.button("Transmit Query Token"):
             if user_query:
                 st.session_state.expert_chat_history.append({'role': 'user', 'text': user_query})
-                resp = "Spent coffee grounds are highly rich in essential nitrogen minerals. Since properties track at 5.8-6.2 pH, configure deployment primarily around acid-loving regional crops."
-                if "mushroom" in user_query.lower(): resp = "Oyster mushrooms display high yield trends when grown on pasteurized spent coffee ground substrates due to nitrogen availability parameters."
+                resp = "Spent coffee grounds are highly rich in essential nitrogen minerals[cite: 1, 2]. Since properties track at 5.8-6.2 pH, configure deployment primarily around acid-loving regional crops[cite: 1, 2]."
+                if "mushroom" in user_query.lower(): resp = "Oyster mushrooms display high yield trends when grown on pasteurized spent coffee ground substrates due to nitrogen availability parameters[cite: 1, 2]."
                 st.session_state.expert_chat_history.append({'role': 'bot', 'text': resp})
                 st.rerun()
         st.markdown("</div>", unsafe_allow_html=True)
-
-    elif nav_selection == "🛒 Circular Eco-Market" or (st.session_state.role_string == "Producer / Manufacturer (Waste Recycler)" and prod_nav == "🛒 Eco-Marketplace"):
-        st.markdown("<div class='academic-header'><h2>Upcycled Commercial Eco-Marketplace</h2></div>", unsafe_allow_html=True)
-        col_mk1, col_mk2 = st.columns([1.8, 1])
-        with col_mk1:
-            for title, info in market_catalog.items():
-                st.markdown("<div class='card'>", unsafe_allow_html=True)
-                cols = st.columns([3, 1])
-                cols[0].markdown(f"#### {title}")
-                cols[0].markdown(f"<p style='color: #2E7D32; font-size: 0.85rem; margin: 0;'><b>Supply Node:</b> {info['origin']}</p>", unsafe_allow_html=True)
-                cols[0].write(info['desc'])
-                cols[1].markdown(f"<h3 style='text-align: center; margin-top:12px;'>{info['price']} TL</h3>", unsafe_allow_html=True)
-                if cols[1].button("Append to Batch", key=title):
-                    st.session_state.cart.append({"title": title, "price": info['price']})
-                    st.toast(f"{title} appended into configuration matrix!")
-                    st.rerun()
-                st.markdown("</div>", unsafe_allow_html=True)
-        with col_mk2:
-            st.markdown("### 🛒 Order Configuration Matrix")
-            st.markdown("<div class='card'>", unsafe_allow_html=True)
-            if not st.session_state.cart:
-                st.write("*Cart contains zero active lines.*")
-                total_price = 0
-            else:
-                total_price = 0
-                for item in st.session_state.cart:
-                    st.write(f"• {item['title']} — {item['price']} TL")
-                    total_price += item['price']
-                st.markdown("---")
-                st.markdown(f"#### **Total Due: {total_price} TL**")
-                if st.button("Flush Order Configuration"):
-                    st.session_state.cart = []
-                    st.rerun()
-            st.markdown("</div>", unsafe_allow_html=True)
-            
-            if total_price > 0:
-                st.markdown("<div class='card'>", unsafe_allow_html=True)
-                st.markdown("#### 💳 Secure Settlement Gateway")
-                st.text_input("Cardholder Name")
-                st.text_input("Card Number", max_chars=19)
-                if st.button("Authorize Payment Protocol"):
-                    st.success(f"🎉 Electronic Financial Settlement Confirmed! Payment of {total_price} TL cleared.")
-                    st.session_state.cart = []
-                st.markdown("</div>", unsafe_allow_html=True)
