@@ -81,15 +81,15 @@ st.markdown("""
 # 2. APPLICATION STATE MANAGEMENT
 # ----------------------------------------------------
 if 'cafe_waste_balance' not in st.session_state: st.session_state.cafe_waste_balance = 35.0
-if 'producer_collected_waste' not in st.session_state: st.session_state.producer_collected_waste = 45.0
+if 'producer_collected_waste' not in st.session_state: st.session_state.producer_collected_waste = 42.0  # Starts inside the free trial zone
 if 'is_premium' not in st.session_state: st.session_state.is_premium = False
 if 'is_auth' not in st.session_state: st.session_state.is_auth = False
 if 'cart' not in st.session_state: st.session_state.cart = []
 if 'expert_chat_history' not in st.session_state: st.session_state.expert_chat_history = []
 
 market_catalog = {
-    "Premium Bio-Espresso Cup": {"origin": "Brew Mood Alsancak", "price": 145, "desc": "100% upcycled structure, heat-resistant casing built from localized carbon-offset coffee composite."},
-    "Nitrogen-Rich Soil Nutrient (2kg)": {"origin": "Two Cup Bornova", "price": 80, "desc": "Perfected bio-fertiliser additive formulation optimal for soil restoration matrix loops."},
+    "Premium Bio-Espresso Cup": {"origin": "Brew Mood Alsancak", "price": 145, "desc": "100% upcycled structure, heat-resistant casing built from localized carbon-offset coffee composite[cite: 1, 2]."},
+    "Nitrogen-Rich Soil Nutrient (2kg)": {"origin": "Two Cup Bornova", "price": 80, "desc": "Perfected bio-fertiliser additive formulation optimal for soil restoration matrix loops[cite: 1, 2]."},
     "Exfoliating Coffee Body Scrub": {"origin": "Coffee Güzelyalı", "price": 110, "desc": "Organic cosmetic consumer goods utilizing antioxidant properties of local grounds extraction[cite: 1, 2]."},
     "Eco Bio-Fuel Pellets (Bulk)": {"origin": "İzmir Bio-Factory", "price": 220, "desc": "Compressed alternative energy resource replacing high-emission coal solutions[cite: 1, 2]."}
 }
@@ -132,7 +132,6 @@ if not st.session_state.is_auth:
 # 4. MAIN APPLICATION HUB (ROLE-BASED DESIGN)
 # ----------------------------------------------------
 else:
-    # Sidebar Setup
     st.sidebar.markdown("<h2 style='text-align: center; color: #2E7D32 !important; margin-bottom:5px;'>ReCoffee App</h2>", unsafe_allow_html=True)
     
     if st.sidebar.button("Logout", use_container_width=True):
@@ -143,7 +142,7 @@ else:
     st.sidebar.markdown("---")
     
     # ----------------------------------------------------
-    # ROLE 1: INDIVIDUAL CONSUMER INTERFACE (NEW)
+    # ROLE 1: INDIVIDUAL CONSUMER INTERFACE
     # ----------------------------------------------------
     if st.session_state.role_string == "Individual Consumer (Shopper)":
         st.sidebar.markdown("<div style='text-align: center; font-size: 0.85rem; margin-bottom:15px; padding: 8px; background:#E0F2F1; border-radius:8px; border: 1px solid #B2DFDB; color:#004D40;'><b>Logged in as:</b><br>🛍️ Eco-Shopper / Consumer</div>", unsafe_allow_html=True)
@@ -153,7 +152,6 @@ else:
             "🛒 Marketplace & Checkout"
         ])
         
-        # SHOPPER SCREEN A: INFORMATIONAL CORNER
         if shopper_nav == "🌱 ReCoffee Impact & Info":
             st.markdown("""
                 <div class='app-header'>
@@ -194,7 +192,6 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
                 
-        # SHOPPER SCREEN B: ECO-MARKET
         elif shopper_nav == "🛒 Marketplace & Checkout":
             st.markdown("""
                 <div class='app-header'>
@@ -303,7 +300,7 @@ else:
                 st.markdown("</div>", unsafe_allow_html=True)
 
     # ----------------------------------------------------
-    # ROLE 3: PRODUCER INTERFACE (HYBRID PRICING)
+    # ROLE 3: PRODUCER INTERFACE (50 KG FREE TRIAL ALGORITHM)
     # ----------------------------------------------------
     elif st.session_state.role_string == "Producer / Manufacturer (Waste Recycler)":
         st.sidebar.markdown("<div style='text-align: center; color: #795548; font-size: 0.85rem; margin-bottom:15px; padding: 8px; background:#FFF3E0; border-radius:8px; border: 1px solid #FFE0B2; color:#E65100;'><b>Logged in as:</b><br>🚜 Waste Recycler Node</div>", unsafe_allow_html=True)
@@ -314,6 +311,7 @@ else:
             "🔬 Agronomy Consultation & Q&A Portal"
         ])
         
+        # PRODUCER MAP INTERFACE
         if prod_nav == "🗺️ The Bridge (Sourcing Map)":
             st.markdown("""
                 <div class='app-header'>
@@ -322,8 +320,9 @@ else:
                 </div>
             """, unsafe_allow_html=True)
             
-            if not st.session_state.is_premium and st.session_state.producer_collected_waste >= 60.0:
-                st.error("🔒 **B2B Sourcing Interface Locked!** Your enterprise profile has exhausted its free threshold allocation limit (60 kg). Sourcing continuous material now requires a **50 TL/month Base Subscription Token** + **1 TL/kg surcharge parameters**[cite: 1, 2]. Please access the Quota Engine to unlock.")
+            # 🔥 STRICT 50 KG LIMIT CEILING RULE FOR FREE ACCOUNTS
+            if not st.session_state.is_premium and st.session_state.producer_collected_waste >= 50.0:
+                st.error("🔒 **B2B Sourcing Interface Locked!** Your enterprise profile has exhausted its **50 kg Free Trial allocation limit (50 kg Trial Rule)**[cite: 1, 2]. Sourcing continuous hammadde material now requires a **50 TL/month Premium Subscription** + **1 TL/kg surcharge parameters**[cite: 1, 2]. Access the Quota Engine to unlock.")
             else:
                 m1, m2, m3 = st.columns(3)
                 current_total_pool = st.session_state.cafe_waste_balance + 20.0 + 32.0
@@ -339,11 +338,12 @@ else:
                 })
                 st.map(map_df, size=16)
 
+        # PRODUCER REVENUE ENGINE (50 KG CEILING MATRIX)
         elif prod_nav == "💎 Premium Subscription & Quota Engine":
             st.markdown("""
                 <div class='app-header'>
                     <h2 style='color:white !important; margin:0;'>B2B Hybrid Pricing Engine</h2>
-                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Fixed 50 TL/Month Subscription Matrix + 1 TL/kg Scaled Variable Cost Parameter Above 60kg Quota[cite: 1, 2].</p>
+                    <p style='color:#A5D6A7 !important; margin:5px 0 0 0;'>Fixed 50 TL/Month Subscription Matrix + 1 TL/kg Scaled Variable Cost Parameter Above 50kg Quota[cite: 1, 2].</p>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -357,9 +357,10 @@ else:
                 st.markdown("#### 💳 Financial Billing Allocation Breakdown:")
                 base_sub_fee = 50 if st.session_state.is_premium else 0
                 
-                if collected > 60.0:
-                    surcharge_kg = collected - 60.0
-                    variable_fee = surcharge_kg * 1.0
+                # 🔥 HYBRID CALCULATION SHIFTED FROM 60 KG TO EXACTLY 50 KG FREE CEILING
+                if collected > 50.0:
+                    surcharge_kg = collected - 50.0
+                    variable_fee = surcharge_kg * 1.0  # 1 TL / kg above 50kg threshold
                 else:
                     surcharge_kg = 0
                     variable_fee = 0
@@ -369,7 +370,7 @@ else:
                 c_led1, c_led2 = st.columns(2)
                 c_led1.write(f"• Fixed Base Monthly Subscription Fee:")
                 c_led2.write(f"**{base_sub_fee} TL**")
-                c_led1.write(f"• Surcharge Volume Parameter (> 60 kg limit):")
+                c_led1.write(f"• Surcharge Volume Parameter (> 50 kg free quota limit):")
                 c_led2.write(f"**{surcharge_kg:.1f} kg**")
                 c_led1.write(f"• Variable Surcharge Cost Allocation (1 TL / kg):")
                 c_led2.write(f"**{variable_fee:.1f} TL**")
@@ -381,8 +382,9 @@ else:
                 st.markdown("### 🚜 Simulate B2B Sourcing Stream Extraction")
                 sim_add = st.number_input("Designate Volume to Squeeze From Active Nodes (kg):", min_value=0.0, step=5.0, value=10.0)
                 if st.button("Execute Extraction Over The Bridge"):
-                    if not st.session_state.is_premium and (st.session_state.producer_collected_waste + sim_add) >= 60.0:
-                        st.error("❌ **Transaction Refused:** This operation will push your allocation over the 60 kg ceiling barrier. You must activate the 50 TL/Month Premium Subscription tier to authorize this transaction[cite: 1, 2].")
+                    # 🔥 BLOCK LOCK FIXED AT 50 KG LIMIT FOR UNPAID TIERS
+                    if not st.session_state.is_premium and (st.session_state.producer_collected_waste + sim_add) >= 50.0:
+                        st.error("❌ **Transaction Refused:** This operation pushes your allocation past the 50 kg free trial ceiling. You must activate the 50 TL/Month Premium Subscription tier to authorize further actions[cite: 1, 2].")
                     else:
                         st.session_state.producer_collected_waste += sim_add
                         st.toast(f"Logged {sim_add} kg of industrial resource materials!")
@@ -394,12 +396,12 @@ else:
                 st.markdown("<p style='color: #E65100; letter-spacing: 1px; font-weight:600; font-size:0.8rem; margin:0;'>HYBRID SUBSCRIPTION HUB</p>", unsafe_allow_html=True)
                 st.markdown("<h3 style='margin-top:5px;'>👑 Premium B2B Tier</h3>", unsafe_allow_html=True)
                 st.markdown("<h1 style='color:#E65100 !important; font-size:3rem; margin:10px 0;'>50 TL <span style='font-size:1rem; color:#795548; font-weight:400;'>/ month</span></h1>", unsafe_allow_html=True)
-                st.markdown("<p style='font-size:0.85rem; color:#5D4037;'><b>+ 1 TL per additional kg</b> extracted once your enterprise passes the 60 kg operational boundary[cite: 1, 2].</p>", unsafe_allow_html=True)
+                st.markdown("<p style='font-size:0.85rem; color:#5D4037;'><b>+ 1 TL per additional kg</b> extracted once your enterprise passes the 50 kg free trial operational boundary[cite: 1, 2].</p>", unsafe_allow_html=True)
                 st.markdown("---")
                 if st.session_state.is_premium:
                     if st.button("Deactivate Premium License Token", use_container_width=True):
                         st.session_state.is_premium = False
-                        st.session_state.producer_collected_waste = 45.0
+                        st.session_state.producer_collected_waste = 35.0  # Safe return under the cap parameter
                         st.rerun()
                 else:
                     if st.button("Authorize 50 TL Premium Subscription", use_container_width=True):
